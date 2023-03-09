@@ -3,7 +3,19 @@
   <head>
         <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> View Active Contracts </title>
+    <title> BlockBazaar View Active Contracts </title>
+    
+        <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4JSQQJSYH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D4JSQQJSYH');
+  </script>
+  
+
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <link href="background.css" rel="stylesheet" type="text/css">
@@ -12,7 +24,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"> -->
 
     <!-- CSS
     ============================================ -->
@@ -79,6 +91,7 @@
         font-size: 1.5em;
         margin-top: 50px;
         cursor: pointer;
+        /* length: 50%; */
       }
 
       select:hover {
@@ -106,6 +119,7 @@
       }
     </style>
   </head>
+
   <body class="sticky-header">
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -200,21 +214,24 @@
       <br>
       <br>
       <div class="text-line" id="chooseActiveContracts">Choose contract to view more details</div>
+      <br>
     </div>
 
 
     <body>
 
       
-      <h1>Transaction History</h1>
-      <div style="display: flex; justify-content: flex-end;">
-        <form style="display: flex; align-items: center;">
-          <label for="search-input" style="font-size: 14px; margin-right: 5px;">Search by Item Name:</label>
-          <div style="display: flex; align-items: center;">
-            <input type="text" id="search-input" name="search" placeholder="Enter item name" style="font-size: 14px; padding: 5px; width: 150px;">
-            <button type="button" onclick="searchTransactions()" style="font-size: 14px; padding: 5px; height: 30px; width: 50px; border-radius: 5px;">Search</button>
-          </div>
-        </form>
+      <center><h1>Transaction History</h1></center>
+      <!-- <div style="display: flex; justify-content: flex-center;">
+        <form style="display: flex; align-items: center;"> -->
+          <!-- <label for="search-input" style="font-size: 14px; margin-right: 5px;">Search by Item Name:</label>
+          <div style="display: flex; align-items: center;"> -->
+            <!-- <input type="text" id="search-input" name="search" placeholder="Enter item name" style="font-size: 14px; padding: 5px; width: 150px;">
+            <button type="button" onclick="searchTransactions()" style="font-size: 14px; padding: 5px; height: 30px; width: 50px; border-radius: 5px;">Search</button> -->
+            <!-- <input id ='inn' type="text" placeholder="Search by any key words...">
+            <button id="submit">Search</button> -->
+          <!-- </div>
+        </form> -->
       </div>
       
       <div id="transaction-list">
@@ -250,13 +267,6 @@
         Parse.initialize("rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6", "rbN8I2nlk462haH28HHxwAka3o02oVqWWz1PrFdi"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
         Parse.serverURL = "https://parseapi.back4app.com/";
 
-
-     
-
-
-
-
-
         /* function that helps dynamically output text */
         async function outputText(id, text, speed) {
             var index = 0;
@@ -289,116 +299,127 @@
             
         }
 
-        
-        
-        setTimeout(() => {
-  // const Transaction = Parse.Object.extend("buyerAddress");
-  // const query = new Parse.Query(Transaction);
-  // query.equalTo("buyerAddress", buyerAccount);
 
-  //     query.descending("createdAt");
-  //     query.find().then((transactions) => {
-  //       const table = document.getElementById("transaction-table");
-  //       transactions.forEach((transaction) => {
-  //         const row = table.insertRow();
-  //         const dateCell = row.insertCell();
-  //         const itemCell = row.insertCell()
-  //         const descriptionCell = row.insertCell();
-  //         const amountCell = row.insertCell();
-  //         const quantityCell = row.insertCell();
-          
-  //         const date = transaction.get("createdAt");
-  //         dateCell.innerText = date.toDateString();
+        const API_URL2 = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
+        async function fetchETHPrice() {
+        try {
+          const response = await fetch(API_URL2);
+          const data = await response.json();
+          const ethPrice = data.ethereum.usd;
+          console.log("Price of 1 ETH in USD:", ethPrice);
+          return ethPrice;
+        } catch (error) {
+          console.error("Error fetching ETH price:", error);
+        }
+      }
 
-  //         const item = transaction.get("item_name");
-  //         itemCell.innerText = item;
+async function readFromDB3(buyerAccount) {
 
-  //         const description = transaction.get("contract_address");
-  //         descriptionCell.innerText = description;
-          
-  //         const amount = transaction.get("item_price");
-  //         amountCell.innerText = amount;
-  //         const quantity = transaction.get("quantity");
-  //         quantityCell.innerText = quantity;
-  //       });
-  //     });
-  //   
-  const Transaction = Parse.Object.extend("buyerAddress");
-  const query = new Parse.Query(Transaction);
-  query.equalTo("buyerAddress", buyerAccount);
-  query.descending("createdAt");
+const Transaction = Parse.Object.extend("buyerAddress");
+const query = new Parse.Query(Transaction);
+query.equalTo("buyerAddress", buyerAccount);
+query.containedIn("buyerState", ["completed", "received"]);
+query.descending("createdAt");
+
+const ethPrice = await fetchETHPrice();
+
+const transactions = await query.find();
+
+const transactionList = document.getElementById("transaction-list");
+transactions.forEach(async (transaction) => {
+
+  const transactionDiv = document.createElement("div");
+  transactionDiv.style.border = "1px solid white";
+  transactionDiv.style.borderRadius = "5px";
+  transactionDiv.style.padding = "15px";
+  //transactionDiv.style.marginBottom = "10px";
+  transactionDiv.style.margin = "15px";
+  transactionDiv.style.display = "flex"; // enable flexbox layout
+
+
+  const transactionDetailsStyle = `
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  `;
+
+  const imageDiv = document.createElement("div");
+  imageDiv.style.width = "100px"; // set width for image container
+  imageDiv.style.height = "100px";
+  imageDiv.style.margin = "5px"; // add some space between image and details
+  imageDiv.style.marginRight = "10px"; // add some space between image and details
+  imageDiv.style.display = "flex";
+  //imageDiv.style.flexGrow = 1; // make imageDiv take up all available space
+
+
+  const date = transaction.get("createdAt").toDateString();
+  const item = transaction.get("item_name");
+  const description = transaction.get("contract_address");
+  const amount = transaction.get("item_price");
+  const quantity = transaction.get("quantity");
   
+  const query3 = new Parse.Query("Product_details");
+  query3.equalTo("contractAddress", description);
+  const results = await query3.find();
+  const results2 = await query3.find();
+  const images = results.map(result => result.get("image").url());
+  const dd = results2.map(result => result.get("SellerAddress"));
+
+  const image = document.createElement("img");
+  image.src = images[0];
+  image.style.width = "100%";
+  image.style.height = "100%";
+  image.style.objectFit = "fit"; // resize image to fill container without distorting
   
-  
-  query.find().then((transactions) => {
-    const transactionList = document.getElementById("transaction-list");
-    transactions.forEach((transaction) => {
-      const transactionDiv = document.createElement("div");
-      transactionDiv.style.border = "1px solid black";
-      transactionDiv.style.borderRadius = "5px";
-      transactionDiv.style.padding = "10px";
-      
-      const date = transaction.get("createdAt").toDateString();
-      const item = transaction.get("item_name");
-      const description = transaction.get("contract_address");
-      const amount = transaction.get("item_price");
-      const quantity = transaction.get("quantity");
-      
-      transactionDiv.innerHTML = `
-        <div><strong>Date:</strong> ${date}</div>
-        <div><strong>Item Name:</strong> ${item}</div>
-        <div><strong>Contract Address:</strong> ${description}</div>
-        <div><strong>Item Price:</strong> ${amount}</div>
-        <div><strong>Quantity:</strong> ${quantity}</div>
-      `;
-      
-      transactionList.appendChild(transactionDiv);
-    });
+
+  imageDiv.appendChild(image);
+  transactionDiv.appendChild(imageDiv);
+
+  const detailsDiv = document.createElement("div");
+  detailsDiv.style.display = "flex";
+  detailsDiv.style.flexDirection = "column"; // stack details vertically
+  detailsDiv.style.height = "100%";
+  //detailsDiv.style.flexShrink = 1; 
+
+  var wei = amount;
+  var eth = wei / 10**18; // Convert Wei to ETH
+  var usd = eth * ethPrice;
+
+  detailsDiv.innerHTML = `
+    <div style="${transactionDetailsStyle}"><span>Item Name: ${item}</span></div>
+    <div style="${transactionDetailsStyle}"><span>Item Price: ${eth.toFixed(6)} ETH ($${usd.toFixed(2)})</span></div>
+    <div style="${transactionDetailsStyle}"><span>Quantity Purchased: ${quantity}</span></div>
+    <div style="${transactionDetailsStyle}"><span>Date Purchased: ${date}</span></div>
+    <div style="${transactionDetailsStyle}"><span>Contract Address: ${description}</span></div>
+    <div style="${transactionDetailsStyle}"><span>Seller Address: ${dd[0]}</span></div>
+  `;
+
+  detailsDiv.querySelectorAll('div[style^="display: flex"]').forEach(div => {
+    div.children[0].style.flexBasis = "50%";
+    div.children[1].style.textAlign = "right";
   });
 
+  transactionDiv.appendChild(imageDiv);
+  transactionDiv.appendChild(detailsDiv);
+  transactionList.appendChild(transactionDiv);
+});
+}
 
 
+const API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
 
-function searchTransactions() {
-    const searchInput = document.getElementById("search-input").value;
-    query.equalTo("item_name", searchInput);
-    query.find().then((transactions) => {
-      const transactionList = document.getElementById("transaction-list");
-      transactionList.innerHTML = "";
-      transactions.forEach((transaction) => {
-        const transactionDiv = document.createElement("div");
-        transactionDiv.style.border = "1px solid black";
-        transactionDiv.style.borderRadius = "5px";
-        transactionDiv.style.padding = "10px";
-        
-        const date = transaction.get("createdAt").toDateString();
-        const item = transaction.get("item_name");
-        const description = transaction.get("contract_address");
-        const amount = transaction.get("item_price");
-        const quantity = transaction.get("quantity");
-        
-        transactionDiv.innerHTML = `
-          <div><strong>Date:</strong> ${date}</div>
-          <div><strong>Item Name:</strong> ${item}</div>
-          <div><strong>Contract Address:</strong> ${description}</div>
-          <div><strong>Item Price:</strong> ${amount}</div>
-          <div><strong>Quantity:</strong> ${quantity}</div>
-        `;
-        
-        transactionList.appendChild(transactionDiv);
-      });
-    });
-  }
-}, 100);
+async function fetchETHPrice() {
 
-
-// HTML code for search form
-
-
-// JavaScript code for search function
-
-
-
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const ethPrice = data.ethereum.usd;
+        console.log("Price of 1 ETH in USD:", ethPrice);
+        return ethPrice;
+    } catch (error) {
+        console.error("Error fetching ETH price:", error);
+    }
+}
     
         function printTime() {
             var date = new Date();
@@ -419,21 +440,28 @@ function searchTransactions() {
           let products = [];
           let prices = [];
           let quants = [];
+          let id = [];
+          // let buyerState = [];
 
             // fetch seller's active contracts' data from database
             var query = new Parse.Query("buyerAddress");
 
             // fetch rows that has column sellerAddress equal to seller Account
             query.equalTo("buyerAddress", buyerAccount);
+            // query.equalTo("buyerState", "paid");
             
             query.find().then(async function(results) {
                 // Extract the data from the results and store it in an array
                 results.forEach(obj => {
+                  if (obj.get("buyerState") != "completed" && obj.get("buyerState") != "received")
+                  {
                   contracts.push(obj.get("contract_address"));
                   products.push(obj.get("item_name"));
                   prices.push(obj.get("item_price"));
                   quants.push(obj.get("quantity"));
-                });
+                  id.push(obj.id);
+                  // console.log(id);
+               }});
                 
                 var text = `Dear Buyer: ${buyerAccount}, as of now, our system indicates that you have ${contracts.length} active 
                 contract(s).`;
@@ -442,19 +470,35 @@ function searchTransactions() {
 
                 // add all the contract address to the option bar
                 var select = document.getElementById("info-selector"); // Get the select element
-                
+
+                const ethPrice = await fetchETHPrice();
+
+
                 for (let i = 0; i < contracts.length; i++) { 
-                    const info = `${products[i]} (${quants[i]}x) at price ${prices[i]} - ${contracts[i]}`;
+
+                  var eth = prices[i] / 10**18;; // Convert Wei to ETH
+                  var usd = eth * ethPrice;
+                  // console.log(usd);
+
+
+                    const info = `${products[i]} (${quants[i]}x) at price $${usd.toFixed(2)} - ${contracts[i]}`;
                     var option = document.createElement("option");
-                    option.textContent = info; // Set the text content of the new option
+                    // var option1 = document.createElement("option1");
+                    option.textContent = id[i] // Set the text content of the new option
                     option.value = contracts[i];
+                    option.label = info;
+                    // console.log(option.textContent);
                     select.appendChild(option); // Add the new option to the select element
+                    // select.appendChild(option1); // Add the new option to the select element
+
                 }
 
                 }, function(error) {
                 console.log("Error: " + error.code + " " + error.message);
             });
-            
+            //await readFromDB2();
+
+            await readFromDB3(buyerAccount);
             
         }
 
@@ -463,10 +507,14 @@ function searchTransactions() {
             select.addEventListener("change", function() {
                 var selectedOption = select.options[select.selectedIndex];
                 var contract = selectedOption.value;
+                var transactionID = selectedOption.textContent;
+                
 
                 // store the contract address and seller address for next html page to access
                 localStorage.setItem('contractAddress', contract);
                 localStorage.setItem('buyerAddress', buyerAccount);
+                localStorage.setItem('transactionID', transactionID);
+                // console.log(localStorage.getItem('transactionID'));
 
                 window.location.href = "buyerContractPage.html";
         });

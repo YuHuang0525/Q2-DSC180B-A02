@@ -4,12 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>eTrade || Home-02</title>
+    <title>BlockBazaar</title>
+
+        <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4JSQQJSYH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D4JSQQJSYH');
+  </script>
+  
+
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"> -->
 
     <!-- CSS
     ============================================ -->
@@ -47,10 +59,10 @@
             padding-right: 5vw;
             padding-top: 0vw;
             padding-bottom: 10vh;
-  font: normal 40px/50px Montserrat, sans-serif;
-  top: 5;
-  position: relative;
-}
+            font: normal 40px/50px Montserrat, sans-serif;
+            top: 5;
+            position: relative;
+        }
 
 .Iam p {
   float: left;
@@ -194,10 +206,10 @@
                                         <!-- <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="cart.html">Cart</a></li> -->
                                         <!-- <li><a href="my-account.html">Account</a></li> -->
-                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="coming_soon.html">Privacy Policy</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">About</a></li>
+                                <li><a href="coming_soon.html">About</a></li>
                                 <!-- <li class="menu-item-has-children">
                                     <a href="#">Blog</a>
                                     <ul class="axil-submenu">
@@ -217,7 +229,7 @@
                     </div>
                     <div class="header-action">
                         <ul class="action-list">
-                            <li class="axil-search d-xl-block d-none">
+                            <!-- <li class="axil-search d-xl-block d-none">
                                 <input type="search" class="placeholder product-search-input" name="search2" id="search2" value="" maxlength="128" placeholder="What are you looking for?" autocomplete="off">
                                 <button type="submit" class="icon wooc-btn-search">
                                     <i class="flaticon-magnifying-glass"></i>
@@ -227,7 +239,7 @@
                                 <a href="javascript:void(0)" class="header-search-icon" title="Search">
                                     <i class="flaticon-magnifying-glass"></i>
                                 </a>
-                            </li>
+                            </li> -->
                             <!-- <li class="wishlist">
                                 <a href="wishlist.html">
                                     <i class="flaticon-heart"></i>
@@ -250,7 +262,7 @@
                                             <a href="my-account.html">My Account</a>
                                         </li> -->
                                         <li>
-                                            <a href="marketplace.html">Marketplace</a>
+                                            <a href="marketplace.html">Shop the Marketplace</a>
                                         </li>
                                         <li>
                                             <a href="buyerActiveContracts.html">My Active Contracts as Buyer</a>
@@ -334,19 +346,19 @@
                                 <div class="single-slide slick-slide" id="slider0">
                                     <div class="axil-product product-style-five">
                                         <div class="thumbnail">
-                                            <a id="slider0detail">
-                                                <img id="slider0img" src="defaultProductImg.png" placeholder="defaultProductImg.png" alt="Product Images">
+                                            <a id="slider0detail" onclick="defaultProductFunction()">
+                                                <img id="slider0img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/c75134784551c752d063f4966fe03193_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
                                             </a>
 
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title" id="slider0title"><a id="slider0detail"></a></h5>
+                                                <h5 class="title" id="slider0title"><a id="slider0detail">Chobani</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price" id="slider0price"></span>
+                                                    <span class="price current-price" id="slider0price">10000 Wei</span>
                                                 </div>
                                                 <ul class="cart-action">
-                                                    <li class="select-option" id="slider0buy"><a id="slider0detail">Buy Product</a></li>
+                                                    <li class="select-option" id="slider0buy" onclick="defaultProductFunction()"><a id="slider4detail">Buy Product</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -359,19 +371,19 @@
                                 <div class="single-slide slick-slide" id="slider1">
                                     <div class="axil-product product-style-five">
                                         <div class="thumbnail">
-                                            <a id="slider1detail">
-                                                <img id="slider1img" src="defaultProductImg.png" placeholder="defaultProductImg.png" alt="Product Images">
+                                            <a id="slider1detail" onclick="defaultProductFunction()">
+                                                <img id="slider1img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/c75134784551c752d063f4966fe03193_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
                                             </a>
 
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title" id="slider1title"><a id="slider1detail"></a></h5>
+                                                <h5 class="title" id="slider1title"><a id="slider1detail">Chobani</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price" id="slider1price"></span>
+                                                    <span class="price current-price" id="slider1price">10000 Wei</span>
                                                 </div>
                                                 <ul class="cart-action">
-                                                    <li class="select-option" id="slider1buy"><a id="slider1detail">Buy Product</a></li>
+                                                    <li class="select-option" id="slider1buy" onclick="defaultProductFunction()"><a id="slider4detail">Buy Product</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -381,19 +393,19 @@
                                 <div class="single-slide slick-slide" id="slider2">
                                     <div class="axil-product product-style-five">
                                         <div class="thumbnail">
-                                            <a id="slider2detail">
-                                                <img id="slider2img" src="defaultProductImg.png" placeholder="defaultProductImg.png" alt="Product Images">
+                                            <a id="slider2detail" onclick="defaultProductFunction()">
+                                                <img id="slider2img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/c75134784551c752d063f4966fe03193_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
                                             </a>
 
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title" id="slider2title"><a id="slider2detail"></a></h5>
+                                                <h5 class="title" id="slider2title"><a id="slider2detail">Chobani</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price" id="slider2price"></span>
+                                                    <span class="price current-price" id="slider2price">10000 Wei</span>
                                                 </div>
                                                 <ul class="cart-action">
-                                                    <li class="select-option" id="slider2buy"><a id="slider2detail">Buy Product</a></li>
+                                                    <li class="select-option" id="slider2buy" onclick="defaultProductFunction()"><a id="slider4detail">Buy Product</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -403,19 +415,19 @@
                                 <div class="single-slide slick-slide" id="slider3">
                                     <div class="axil-product product-style-five">
                                         <div class="thumbnail">
-                                            <a id="slider3detail">
-                                                <img id="slider3img" src="defaultProductImg.png" placeholder="defaultProductImg.png" alt="Product Images">
+                                            <a id="slider3detail" onclick="defaultProductFunction()">
+                                                <img id="slider3img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/c75134784551c752d063f4966fe03193_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
                                             </a>
 
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title" id="slider3title"><a id="slider3detail"></a></h5>
+                                                <h5 class="title" id="slider3title"><a id="slider3detail">Chobani</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price" id="slider3price"></span>
+                                                    <span class="price current-price" id="slider3price">10000 Wei</span>
                                                 </div>
                                                 <ul class="cart-action">
-                                                    <li class="select-option" id="slider3buy"><a id="slider3detail">Buy Product</a></li>
+                                                    <li class="select-option" id="slider3buy" onclick="defaultProductFunction()"><a id="slider4detail">Buy Product</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -426,15 +438,15 @@
                                     <div class="axil-product product-style-five">
                                         <div class="thumbnail">
                                             <a id="slider4detail" onclick="defaultProductFunction()">
-                                                <img id="slider4img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/073b75c22960ff186b754144964cd885_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
+                                                <img id="slider4img" src="https://parsefiles.back4app.com/rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6/c75134784551c752d063f4966fe03193_image.jpg" placeholder="defaultProductImg.png" alt="Product Images">
                                             </a>
 
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title" id="slider4title"><a id="slider4detail">Backpack</a></h5>
+                                                <h5 class="title" id="slider4title"><a id="slider4detail">Chobani</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price" id="slider4price">5000 Wei</span>
+                                                    <span class="price current-price" id="slider4price">10000 Wei</span>
                                                 </div>
                                                 <ul class="cart-action">
                                                     <li class="select-option" id="slider4buy" onclick="defaultProductFunction()"><a id="slider4detail">Buy Product</a></li>
@@ -456,6 +468,47 @@
         <!-- Start Categorie Area  -->
 
         <!-- End Categorie Area  -->
+        <!-- Start Footer Area  -->
+    <footer class="axil-footer-area footer-style-2">
+        
+        <!-- End Footer Top Area  -->
+        <!-- Start Copyright Area  -->
+        <div class="copyright-area copyright-default separator-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-4">
+                        <div class="social-share">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12">
+                        <div class="copyright-left d-flex flex-wrap justify-content-center">
+                            <ul class="quick-link">
+                                <!-- <li>© 2023. All rights reserved by <a target="_blank" href="https://axilthemes.com/">Axilthemes</a>.</li> -->
+                                <li>© 2023. All rights reserved by BlockBazaar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12">
+                        <div class="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
+                            <span class="card-text">Support</span>
+                            <ul class="payment-icons-bottom quick-link">
+                                <li><img src="assets/images/icons/metamask.png" alt="paypal cart"></li>
+                                <!-- <li><img src="assets/images/icons/coin.png" alt="paypal cart"></li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright Area  -->
+    </footer>
+    <!-- End Footer Area  -->
 <!--
 ============================================ -->
     <!-- Modernizer JS -->
@@ -488,6 +541,19 @@
     Parse.initialize("rgzBD2oDrFGwnP4GhepGqvLTb4zxUCVA8ISU94G6", "rbN8I2nlk462haH28HHxwAka3o02oVqWWz1PrFdi");
     Parse.serverURL = "https://parseapi.back4app.com/";
 
+    const API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
+        async function fetchETHPrice() {
+        try {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+            const ethPrice = data.ethereum.usd;
+            console.log("Price of 1 ETH in USD:", ethPrice);
+            return ethPrice;
+        } catch (error) {
+            console.error("Error fetching ETH price:", error);
+        }
+        }
+
 
     window.onload = async function() {
       // Code to be executed after all images have loaded
@@ -504,8 +570,9 @@
                
         }
 
-        document.getElementById("logIn").textContent = "View My Account";
-        document.getElementById("logIn").href = "my-account.html";
+        document.getElementById("logIn").textContent = "Connected";
+        // document.getElementById("logIn").textContent = "View My Account";
+        // document.getElementById("logIn").href = "my-account.html";
         localStorage.setItem("account", account);
         
     }
@@ -523,6 +590,8 @@
 
         async function renderProductsAtSlider(products) {
 
+            const ethPrice = await fetchETHPrice();
+
             for (let i = 0; i < 5; i++) {
                 const product = products[i];
                 var photo = product.image.url;
@@ -530,13 +599,13 @@
 
                 console.log(photo);
 
-                await createProductSlide(i, photo, product);
+                await createProductSlide(i, photo, product,ethPrice);
 
             }
         }
 
 
-        async function createProductSlide(idx, photo, product) {
+        async function createProductSlide(idx, photo, product,ethPrice) {
 
 
             document.getElementById(`slider${idx}img`).src = photo;
@@ -556,14 +625,20 @@
                 window.location.href = "confirmPurchase.html";
             }
 
+            var wei =   product.ProductPrice ;//price[0];
+            var eth = wei / 10**18;; // Convert Wei to ETH
+            console.log(eth);
+            console.log(ethPrice);
+            var usd = eth * ethPrice;
+
             document.getElementById(`slider${idx}title`).textContent = product.ProductName;
-            document.getElementById(`slider${idx}price`).textContent = product.ProductPrice + " Wei";
+            document.getElementById(`slider${idx}price`).textContent =  eth.toFixed(4) + " ETH ($" + usd.toFixed(2) + ")";//product.ProductPrice + " Wei";
             
         }
 
         async function defaultProductFunction() {
 
-            localStorage.setItem("contractAddress", "0xFeE3d89f802f53a5F88A6d7315559259942aB2De");
+            localStorage.setItem("contractAddress", "0xd415eA70AAfD9c637DF3076342454679894EEd36");
             window.location.href = "confirmPurchase.html";
             
         }

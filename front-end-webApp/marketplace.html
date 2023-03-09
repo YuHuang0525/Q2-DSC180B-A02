@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+
         <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-    <title>Marketplace</title>
+    <title>BlockBazaar Marketplace</title>
+
+        <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4JSQQJSYH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D4JSQQJSYH');
+  </script>
+  
+  
     <link href="background.css" rel="stylesheet" type="text/css">
         <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"> -->
 
     <!-- CSS
     ============================================ -->
@@ -91,7 +104,7 @@ header {
         width: 5em;
         background-color: #dfd;
         border: none;
-        color: black
+        color: black;
         border-radius: 0 4px 4px 0;
         cursor: pointer;
         margin-left: -1px;
@@ -192,15 +205,21 @@ header {
   border: 0.01em solid #dddbdb;
   border-radius: 0 0 2% 2%;
   padding: 1em;
+  overflow: scroll;
+  
 }
 
 h2, h3 {
   float: left;
   font-family: 'Roboto', sans-serif;
+  color: Black;
   font-weight: 400;
-  font-size: 1em;
-  text-transform: uppercase;
+  font-size: 1.1em;
+  text-transform: full-width;
   margin: 0.2em auto;
+  overflow: scroll;
+  /* border: 0.01em solid #dddbdb; */
+  
 }
 
 .item, .price {
@@ -211,6 +230,8 @@ h2, h3 {
 
 .price {
   color: Black;
+  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .description, label, button {
@@ -226,6 +247,8 @@ h2, h3 {
   height: 4em; /* adjust the height based on your needs */
   overflow: scroll;
   overflow-x: scroll;
+  overflow-y: scroll;
+  /* border: 0.01em solid #dddbdb; */
 /*  border: ridge;*/
 }
 
@@ -366,10 +389,12 @@ async function renderProducts(products) {
     //console.log(photo);
     
     var wei = product.ProductPrice;
-    var eth = 500 / 10**18;; // Convert Wei to ETH
+    var eth = wei / 10**18;; // Convert Wei to ETH
     console.log(eth);
-    var usd = eth * ethPrice * 100;
+    var usd = eth * ethPrice;
     console.log(usd);
+
+    var ethh= product.ProductPrice/1000000000000000000;
 
     const productHTML = `
       <div class="product">
@@ -379,7 +404,7 @@ async function renderProducts(products) {
     </div>
         <div class="text-box">
           <h2 class="item">${product.ProductName}</h2>
-          <h3 class="price">${product.ProductPrice} Wei ($${usd.toFixed(2)})</h3>
+          <h3 class="price">${ethh.toFixed(4)} ETH ($${usd.toFixed(2)})</h3>
           <p class="description">${product.ProductDescription}</p>
           <button class="add-to-cart-btn" data-product-id="${product.contractAddress}">Buy Item</button>
         </div>
